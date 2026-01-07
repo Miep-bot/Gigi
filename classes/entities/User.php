@@ -40,4 +40,22 @@ class User {
             'password' => $passwordHash
         ]);
     }
+
+    public function getById(int $id): ?array {
+        $stmt = $this->db->prepare(
+            "SELECT * FROM users WHERE id = :id"
+        );
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch() ?: null;
+    }
+
+    public function updateCoins(int $userId, int $newAmount): void {
+        $stmt = $this->db->prepare(
+            "UPDATE users SET coins = :coins WHERE id = :id"
+        );
+        $stmt->execute([
+            'coins' => $newAmount,
+            'id' => $userId
+        ]);
+    }
 }

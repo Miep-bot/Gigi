@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../app/controllers/CartController.php';
+require_once __DIR__ . '/../classes/controllers/CartController.php';
 
 $controller = new CartController();
 
