@@ -10,9 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<?php session_start(); ?>
-<?php include 'assets/components/nav.php'; ?>
-<link rel="stylesheet" href="assets/css/style.css">
+<?php include '../style/components/nav.php'; ?>
+<link rel="stylesheet" href="../style/css/style.css">
 
 <form method="post">
     <input name="first_name" placeholder="Voornaam">

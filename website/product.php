@@ -29,9 +29,8 @@ if (!$product) {
 $reviews = $reviewController->getByProduct($productId);
 ?>
 
-<?php session_start(); ?>
-<?php include 'assets/components/nav.php'; ?>
-<link rel="stylesheet" href="assets/css/style.css">
+<?php include '../style/components/nav.php'; ?>
+<link rel="stylesheet" href="../style/css/style.css">
 
 <h1><?= Security::escape($product['name']) ?></h1>
 <p><?= Security::escape($product['description'] ?? '') ?></p>

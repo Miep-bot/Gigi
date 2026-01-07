@@ -12,9 +12,8 @@ $products = $controller->getProducts($tagId);
 $tags = $controller->getTags();
 ?>
 
-<?php session_start(); ?>
-<?php include 'assets/components/nav.php'; ?>
-<link rel="stylesheet" href="assets/css/style.css">
+<?php include '../style/components/nav.php'; ?>
+<link rel="stylesheet" href="../style/css/style.css">
 
 <h1>Gigi – Games</h1>
 
