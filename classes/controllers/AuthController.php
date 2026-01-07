@@ -48,6 +48,9 @@ class AuthController {
     $_SESSION['user'] = [
         'id' => $user['id'],
         'email' => $user['email'],
+        'first_name' => $user['first_name'],
+        'last_name' => $user['last_name'],
+        'coins' => (int)$user['coins'],
         'is_admin' => (bool)$user['is_admin']
     ];
 

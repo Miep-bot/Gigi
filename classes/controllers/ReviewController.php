@@ -44,4 +44,8 @@ class ReviewController {
     public function getByProduct(int $productId): array {
         return $this->reviewModel->getByProduct($productId);
     }
+
+    public function getAverageByProduct(int $productId): array {
+        return $this->reviewModel->getAverageByProduct($productId);
+    }
 }

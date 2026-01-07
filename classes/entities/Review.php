@@ -21,6 +21,18 @@ class Review {
         return $stmt->fetchAll();
     }
 
+    public function getAverageByProduct(int $productId): array {
+        $stmt = $this->db->prepare(
+            "SELECT COUNT(*) AS cnt, AVG(rating) AS avg_rating FROM reviews WHERE product_id = :product"
+        );
+        $stmt->execute(['product' => $productId]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return [
+            'count' => (int)($row['cnt'] ?? 0),
+            'average' => $row['avg_rating'] !== null ? round((float)$row['avg_rating'], 1) : 0.0
+        ];
+    }
+
     public function create(
         int $userId,
         int $productId,
@@ -34,8 +46,8 @@ class Review {
 
         $stmt = $this->db->prepare(
             "INSERT INTO reviews
-            (user_id, product_id, rating, title, comment, creation_time)
-            VALUES (:user, :product, :rating, :title, :comment, NOW())"
+            (user_id, product_id, rating, title, comment, is_verified, creation_time)
+            VALUES (:user, :product, :rating, :title, :comment, :is_verified, NOW())"
         );
 
         $stmt->execute([
@@ -43,7 +55,8 @@ class Review {
             'product' => $productId,
             'rating' => $rating,
             'title' => $title,
-            'comment' => $comment
+            'comment' => $comment,
+            'is_verified' => 0
         ]);
     }
 }

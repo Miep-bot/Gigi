@@ -1,3 +1,6 @@
+<?php include '../style/components/nav.php'; ?>
+<link rel="stylesheet" href="../style/css/style.css">
+
 <?php
 require_once __DIR__ . '/../classes/controllers/AdminController.php';
 require_once __DIR__ . '/../classes/config/Security.php';
@@ -23,30 +26,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<h1><?= $product ? 'Product bewerken' : 'Nieuw product' ?></h1>
+<div class="container">
+    <h1 class="admin-title"><?= $product ? 'Product bewerken' : 'Nieuw product' ?></h1>
 
-<form method="post">
-    <?php if ($product): ?>
-        <input type="hidden" name="id" value="<?= (int)$product['id'] ?>">
-    <?php endif; ?>
+    <form method="post" class="product-form">
+        <?php if ($product): ?>
+            <input type="hidden" name="id" value="<?= (int)$product['id'] ?>">
+        <?php endif; ?>
 
-    <input name="name" placeholder="Naam"
-           value="<?= Security::escape($product['name'] ?? '') ?>">
+        <div class="form-row">
+            <div class="form-col">
+                <label for="name">Naam</label>
+                <input id="name" name="name" placeholder="Naam"
+                       value="<?= Security::escape($product['name'] ?? '') ?>">
 
-    <textarea name="description"><?= Security::escape($product['description'] ?? '') ?></textarea>
+                <label for="description">Beschrijving</label>
+                <textarea id="description" name="description" rows="6"><?= Security::escape($product['description'] ?? '') ?></textarea>
+            </div>
 
-    <input type="number" name="price"
-           value="<?= (int)($product['price'] ?? 0) ?>">
+            <div class="form-col">
+                <label for="price">Prijs (coins)</label>
+                <input id="price" type="number" name="price"
+                       value="<?= (int)($product['price'] ?? 0) ?>">
 
-    <h3>Tags</h3>
-    <?php foreach ($tags as $tag): ?>
-        <label>
-            <input type="checkbox" name="tags[]"
-                   value="<?= (int)$tag['id'] ?>"
-                   <?= in_array($tag['id'], $productTags) ? 'checked' : '' ?>>
-            <?= Security::escape($tag['tag']) ?>
-        </label><br>
-    <?php endforeach; ?>
+                <h3>Tags</h3>
+                <div class="tags-grid">
+                <?php foreach ($tags as $tag): ?>
+                    <label class="tag-checkbox">
+                        <input type="checkbox" name="tags[]"
+                               value="<?= (int)$tag['id'] ?>"
+                               <?= in_array($tag['id'], $productTags) ? 'checked' : '' ?>>
+                        <span><?= Security::escape($tag['tag']) ?></span>
+                    </label>
+                <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
 
-    <button>Opslaan</button>
-</form>
+        <div class="form-actions">
+            <button class="btn-primary" type="submit">Opslaan</button>
+            <a href="admin.php" class="btn-secondary-link"><button type="button">Annuleren</button></a>
+        </div>
+    </form>
+
+    <hr>
+    <a href="admin.php"><button>← Back to Admin</button></a>
+</div>

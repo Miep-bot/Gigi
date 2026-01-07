@@ -15,6 +15,22 @@ class Tag {
         return $stmt->fetchAll();
     }
 
+    public function create(string $tag): int {
+        $stmt = $this->db->prepare("INSERT INTO tags (tag) VALUES (:tag)");
+        $stmt->execute(['tag' => $tag]);
+        return (int)$this->db->lastInsertId();
+    }
+
+    public function update(int $id, string $tag): void {
+        $stmt = $this->db->prepare("UPDATE tags SET tag = :tag WHERE id = :id");
+        $stmt->execute(['tag' => $tag, 'id' => $id]);
+    }
+
+    public function delete(int $id): void {
+        $stmt = $this->db->prepare("DELETE FROM tags WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+    }
+
     public function getByProduct(int $productId): array {
     $stmt = $this->db->prepare(
         "SELECT t.*

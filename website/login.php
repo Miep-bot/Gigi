@@ -23,11 +23,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include '../style/components/nav.php'; ?>
 <link rel="stylesheet" href="../style/css/style.css">
+<div class="container auth-container">
+    <h1>Login</h1>
 
-<form method="post">
-    <input name="email" type="email" placeholder="Email">
-    <input name="password" type="password" placeholder="Wachtwoord">
-    <button>Login</button>
-</form>
+    <?php if ($error): ?>
+        <div class="message error"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
 
-<p><?= htmlspecialchars($error) ?></p>
+    <form method="post" class="auth-form">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Password" required>
+        </div>
+
+        <button class="btn-primary" type="submit">Login</button>
+    </form>
+
+    <hr>
+    <p>Don't have an account? <a href="register.php">Register here</a></p>
+</div>

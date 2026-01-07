@@ -38,6 +38,18 @@ class AdminController {
         return $this->tagModel->getByProduct($productId);
     }
 
+    public function createTag(string $tag): int {
+        return $this->tagModel->create($tag);
+    }
+
+    public function updateTag(int $id, string $tag): void {
+        $this->tagModel->update($id, $tag);
+    }
+
+    public function deleteTag(int $id): void {
+        $this->tagModel->delete($id);
+    }
+
     public function saveProduct(array $data): void {
         if (empty($data['name']) || empty($data['price'])) {
             throw new Exception("Naam en prijs zijn verplicht");
