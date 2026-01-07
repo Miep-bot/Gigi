@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/../app/controllers/ProductController.php';
-require_once __DIR__ . '/../app/helpers/Security.php';
+require_once __DIR__ . '/../classes/controllers/ProductController.php';
+require_once __DIR__ . '/../classes/config/Security.php';
 
 $controller = new ProductController();
 
@@ -42,6 +42,11 @@ $tags = $controller->getTags();
 
             <p><?= Security::escape($product['description'] ?? '') ?></p>
             <strong><?= (int)$product['price'] ?> coins</strong>
+
+            <form method="post" action="add_to_cart.php">
+                <input type="hidden" name="product_id" value="<?= (int)$product['id'] ?>">
+                <button>In winkelmandje</button>
+            </form>
         </div>
     <?php endforeach; ?>
 </div>
