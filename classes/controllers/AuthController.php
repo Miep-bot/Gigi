@@ -35,24 +35,28 @@ class AuthController {
     }
 
     public function login(array $data): string {
-        $user = $this->userModel->findByEmail($data['email']);
-
-        if (!$user || !password_verify($data['password'], $user['password'])) {
-            return "Ongeldige login.";
-        }
-
-        $_SESSION['user'] = [
-            'id' => $user['id'],
-            'email' => $user['email'],
-            'is_admin' => $user['is_admin']
-        ];
-
-        return "success";
+    if (empty($data['email']) || empty($data['password'])) {
+        return "Vul alle velden in.";
     }
 
-    public function logout(): void {
-        session_destroy();
-        header("Location: login.php");
-        exit;
+    $user = $this->userModel->findByEmail($data['email']);
+
+    if (!$user || !password_verify($data['password'], $user['password'])) {
+        return "Ongeldige login.";
+    }
+
+    $_SESSION['user'] = [
+        'id' => $user['id'],
+        'email' => $user['email'],
+        'is_admin' => (bool)$user['is_admin']
+    ];
+
+    // Admin → admin dashboard
+    if ($user['is_admin']) {
+        return "admin";
+    }
+
+    // User → webshop
+    return "user";
     }
 }

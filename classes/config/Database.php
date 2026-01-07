@@ -5,9 +5,9 @@ class Database {
 
     private function __construct() {
         $this->pdo = new PDO(
-            "mysql:host=localhost;dbname=gigi",
+            "mysql:host=localhost;dbname=games",
             "root",
-            "",
+            "BleepBloop28*",
             [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
         );
     }

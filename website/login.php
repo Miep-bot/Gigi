@@ -1,6 +1,5 @@
 <?php
-
-require_once __DIR__ . '/../classes/controllers/AuthController.php';
+require_once __DIR__ . '/../app/controllers/AuthController.php';
 
 $auth = new AuthController();
 $error = "";
@@ -8,7 +7,12 @@ $error = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $auth->login($_POST);
 
-    if ($result === "success") {
+    if ($result === "admin") {
+        header("Location: admin.php");
+        exit;
+    }
+
+    if ($result === "user") {
         header("Location: index.php");
         exit;
     }
