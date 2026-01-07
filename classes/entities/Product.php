@@ -1,32 +1,32 @@
 <?php
 
+require_once __DIR__ . '/../config/Database.php';
+
 class Product {
-    private $db;
+    private PDO $db;
 
     public function __construct() {
         $this->db = Database::getInstance();
     }
 
-    public function getAll() {
-        $stmt = $this->db->prepare("SELECT * FROM products");
+    public function getAll(): array {
+        $stmt = $this->db->prepare(
+            "SELECT * FROM products ORDER BY creation_time DESC"
+        );
         $stmt->execute();
         return $stmt->fetchAll();
     }
 
-    public function create($title, $price, $categoryId) {
-        if ($price <= 0) {
-            throw new Exception("Prijs moet groter zijn dan 0");
-        }
-
+    public function getByTag(int $tagId): array {
         $stmt = $this->db->prepare(
-            "INSERT INTO products (title, price, category_id)
-             VALUES (:title, :price, :category)"
+            "SELECT p.*
+             FROM products p
+             JOIN productTags pt ON p.id = pt.product_id
+             WHERE pt.tag_id = :tagId
+             ORDER BY p.creation_time DESC"
         );
 
-        $stmt->execute([
-            'title' => $title,
-            'price' => $price,
-            'category' => $categoryId
-        ]);
+        $stmt->execute(['tagId' => $tagId]);
+        return $stmt->fetchAll();
     }
 }
