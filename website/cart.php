@@ -6,6 +6,10 @@ $controller = new CartController();
 $items = $controller->getCartItems();
 ?>
 
+<?php session_start(); ?>
+<?php include 'assets/components/nav.php'; ?>
+<link rel="stylesheet" href="assets/css/style.css">
+
 <h1>Winkelmandje</h1>
 
 <?php if (empty($items)): ?>

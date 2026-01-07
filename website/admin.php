@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+
 session_start();
 require_once __DIR__ . '/../classes/config/Auth.php';
 
@@ -11,6 +13,10 @@ require_once __DIR__ . '/../classes/config/Security.php';
 $admin = new AdminController();
 $products = $admin->getProducts();
 ?>
+
+<?php session_start(); ?>
+<?php include 'assets/components/nav.php'; ?>
+<link rel="stylesheet" href="assets/css/style.css">
 
 <h1>Admin dashboard</h1>
 

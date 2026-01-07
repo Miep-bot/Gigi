@@ -7,6 +7,10 @@ $controller = new OrderController();
 $orders = $controller->getOrders();
 ?>
 
+<?php session_start(); ?>
+<?php include 'assets/components/nav.php'; ?>
+<link rel="stylesheet" href="assets/css/style.css">
+
 <h1>Mijn bestellingen</h1>
 
 <?php if (empty($orders)): ?>

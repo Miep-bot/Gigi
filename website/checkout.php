@@ -17,6 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<?php session_start(); ?>
+<?php include 'assets/components/nav.php'; ?>
+<link rel="stylesheet" href="assets/css/style.css">
+
 <h1>Checkout</h1>
 
 <form method="post">
