@@ -54,12 +54,12 @@ class AuthController {
         'is_admin' => (bool)$user['is_admin']
     ];
 
-    // Admin → admin dashboard
+    
     if ($user['is_admin']) {
         return "admin";
     }
 
-    // User → webshop
+
     return "user";
     }
 }

@@ -28,7 +28,7 @@ $orders = $controller->getOrders();
                     <?php
                     $items = $controller->getOrderItems((int)$order['id']);
                     
-                    // Group items by product
+
                     $groupedItems = [];
                     foreach ($items as $item) {
                         $productId = (int)$item['id'];

@@ -12,10 +12,10 @@ $controller = new OrderController();
 $cartController = new CartController();
 $message = "";
 
-// Get cart items for display
+ 
 $cartItems = $cartController->getCartItems();
 
-// Group items by product
+ 
 $groupedItems = [];
 foreach ($cartItems as $item) {
     $productId = (int)$item['id'];
@@ -112,7 +112,7 @@ function cancelPayment() {
     document.getElementById('payment-confirmation').style.display = 'none';
 }
 
-// Close popup if user clicks outside the box
+
 document.addEventListener('click', function(event) {
     const popup = document.getElementById('payment-confirmation');
     const box = document.querySelector('.payment-confirmation-box');

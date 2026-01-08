@@ -44,17 +44,17 @@ class OrderController {
             return "Onvoldoende coins.";
         }
 
-        // order maken
+        
         $this->orderModel->create($userId, $items);
 
-        // coins aftrekken
+        
         $newCoins = $user['coins'] - $total;
         $this->userModel->updateCoins($userId, $newCoins);
         if (isset($_SESSION['user'])) {
             $_SESSION['user']['coins'] = $newCoins;
         }
 
-        // cart leegmaken
+
         foreach ($items as $item) {
             $this->cartItemModel->remove($item['cartitem_id']);
         }

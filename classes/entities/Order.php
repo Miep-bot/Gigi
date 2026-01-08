@@ -13,7 +13,7 @@ class Order {
         $this->db->beginTransaction();
 
         try {
-            // order
+            
             $stmt = $this->db->prepare(
                 "INSERT INTO orders (user_id, creation_time)
                  VALUES (:user, NOW())"
@@ -22,7 +22,7 @@ class Order {
 
             $orderId = (int)$this->db->lastInsertId();
 
-            // orderitems
+
             $stmtItem = $this->db->prepare(
                 "INSERT INTO orderitems (order_id, product_id)
                  VALUES (:order, :product)"

@@ -3,7 +3,7 @@ session_start();
 
 header('Content-Type: application/json');
 
-// Check if user is logged in
+
 if (empty($_SESSION['user'])) {
     echo json_encode([
         'success' => false,

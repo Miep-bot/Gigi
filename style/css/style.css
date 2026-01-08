@@ -10,9 +10,7 @@ body {
 .footer {
     margin-top: 5em;
 }
-/* -------------------------
-   Footer
---------------------------- */
+ 
 .footer {
     background: linear-gradient(90deg, #7F35FF 0%, #5f1fd9 100%);
     color: #fff;
@@ -83,9 +81,7 @@ body {
         text-align: left;
     }
 }
-/* -------------------------
-   Tags Popup (Index Page)
---------------------------- */
+ 
 .tags-popup-overlay {
     position: fixed;
     top: 0;
@@ -180,9 +176,7 @@ body {
     from { opacity: 0; transform: scale(0.97); }
     to { opacity: 1; transform: scale(1); }
 }
-/* -------------------------
-   Base
---------------------------- */
+ 
 * {
     margin: 0;
     padding: 0;
@@ -197,9 +191,7 @@ body {
     min-height: 100vh;
 }
 
-/* -------------------------
-   Links & Buttons
---------------------------- */
+ 
 a {
     text-decoration: none;
     color: inherit;
@@ -220,9 +212,7 @@ button:hover {
     background-color: #5f1fd9;
 }
 
-/* -------------------------
-   Containers
---------------------------- */
+ 
 .container {
     width: 90%;
     max-width: 1200px;
@@ -230,17 +220,13 @@ button:hover {
     padding: 1rem 0;
 }
 
-/* -------------------------
-   Headings
---------------------------- */
+ 
 h1, h2, h3, h4 {
     margin-bottom: 0.5em;
     color: #7F35FF;
 }
 
-/* -------------------------
-   Forms
---------------------------- */
+ 
 input, textarea, select {
     width: 100%;
     padding: 0.6em;
@@ -260,9 +246,7 @@ label {
     display: block;
 }
 
-/* -------------------------
-   Auth / Login Form
---------------------------- */
+ 
 .auth-container {
     max-width: 420px;
     margin: 2rem auto;
@@ -290,9 +274,7 @@ label {
 .message.success { background-color: #d4edda; color: #155724; }
 .message.error { background-color: #f8d7da; color: #721c24; }
 
-/* -------------------------
-   Tables
---------------------------- */
+ 
 table {
     width: 100%;
     border-collapse: collapse;
@@ -310,9 +292,7 @@ table th {
     color: #fff;
 }
 
-/* -------------------------
-   Product cards
---------------------------- */
+ 
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -343,7 +323,7 @@ table th {
     margin-bottom: 0.5em;
 }
 
-/* Make product details clickable while keeping the add-to-cart button separate */
+ 
 .product-link {
     display: block;
     color: inherit;
@@ -352,7 +332,7 @@ table th {
 .product-link:hover {
     text-decoration: none;
 }
-/* Admin tags styles */
+ 
 .admin-tags {
     background: #fff;
     padding: 1rem;
@@ -375,9 +355,7 @@ table th {
     margin-right: 0.5rem;
 }
 
-/* -------------------------
-   Product Form (Admin)
---------------------------- */
+ 
 .product-form {
     background: #fff;
     padding: 1rem;
@@ -409,10 +387,7 @@ table th {
     background: #6c757d;
 }
 
-/* -------------------------
-   Tag active state on index
-    position: relative; /* Changed from fixed to relative */
---------------------------- */
+ 
 .nav a.active-tag, nav a.active-tag, .filter-start.active-tag {
     background-color: #e8dbff;
     color: #4b00d6;
@@ -421,15 +396,13 @@ table th {
     box-shadow: 0 2px 6px rgba(79,0,217,0.08);
 }
 
-/* ensure tag links have consistent spacing */
+ 
 nav a {
     display: inline-block;
     margin-right: 0.5rem;
 }
 
-/* -------------------------
-   Admin products grid
---------------------------- */
+ 
 .admin-header {
     display: flex;
     justify-content: space-between;
@@ -487,9 +460,7 @@ nav a {
     border: 1px solid #dc3545;
     color: #dc3545;
 }
-/* -------------------------
-   Reviews
---------------------------- */
+ 
 .review {
     background-color: #fff;
     padding: 0.8em 1em;
@@ -502,18 +473,14 @@ nav a {
     margin-top: 0.3em;
 }
 
-/* -------------------------
-   Buttons small
---------------------------- */
+ 
 .btn-small {
     padding: 0.4em 0.8em;
     font-size: 0.9rem;
     border-radius: 5px;
 }
 
-/* -------------------------
-   Alerts
---------------------------- */
+ 
 .alert {
     padding: 0.8em 1em;
     border-radius: 6px;
@@ -525,9 +492,7 @@ nav a {
 .alert-success { background-color: #28a745; }
 .alert-error { background-color: #dc3545; }
 
-/* -------------------------
-   Navbar
---------------------------- */
+ 
 .navbar {
     background-color: #7F35FF;
     color: #fff;
@@ -608,7 +573,7 @@ nav a {
     font-size: 1rem;
 }
 
-/* Responsive navbar */
+ 
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
@@ -655,9 +620,7 @@ nav a {
     padding: 0.2em 0.5em;
 }
 
-/* -------------------------
-   Cart Badge
---------------------------- */
+ 
 .nav-links li a {
     position: relative;
     /* ...existing code... */
@@ -683,9 +646,7 @@ nav a {
     transition: background 0.15s;
 }
 
-/* -------------------------
-   Cart Popup
---------------------------- */
+ 
 .cart-popup {
     position: fixed;
     top: 100px;
@@ -772,9 +733,7 @@ nav a {
     background-color: #5a6268;
 }
 
-/* -------------------------
-   Orders & Cart Totals
---------------------------- */
+ 
 .order-item {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -854,9 +813,7 @@ nav a {
     margin-top: 1rem;
 }
 
-/* -------------------------
-   Remove Button
---------------------------- */
+ 
 .btn-remove {
     background-color: transparent !important;
     color: #7F35FF !important;
@@ -872,9 +829,7 @@ nav a {
     color: #5f1fd9 !important;
 }
 
-/* -------------------------
-   Quantity Controls
---------------------------- */
+ 
 .quantity-controls {
     display: flex;
     align-items: center;
@@ -908,9 +863,7 @@ nav a {
     font-weight: 600;
 }
 
-/* -------------------------
-   Checkout Summary
---------------------------- */
+ 
 .checkout-summary {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -941,9 +894,7 @@ nav a {
     text-align: right;
 }
 
-/* -------------------------
-   Payment Confirmation
---------------------------- */
+ 
 .payment-confirmation-overlay {
     position: fixed;
     top: 0;
@@ -1014,9 +965,7 @@ nav a {
     margin-top: 1.5em;
     justify-content: center;
 }
-/* -------------------------
-   Rating Selector (stars)
---------------------------- */
+ 
 .rating-selector {
     display: flex;
     flex-direction: row-reverse;
@@ -1039,8 +988,7 @@ nav a {
     transition: color 0.12s ease-in-out;
 }
 
-/* hover: highlight the hovered star and all stars to its left (visual)
-   using DOM order + row-reverse */
+
 .rating-option:hover .rating-star,
 .rating-option:hover ~ .rating-option .rating-star {
     color: #FFD700;

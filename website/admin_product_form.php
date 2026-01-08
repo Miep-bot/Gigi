@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = $_POST;
-    // Handle image upload
+
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $tmpName = $_FILES['image']['tmp_name'];
         $origName = basename($_FILES['image']['name']);

@@ -15,11 +15,10 @@ $tagId = isset($_GET['tag']) ? (int)$_GET['tag'] : null;
 
 $products = $controller->getProducts($tagId);
 $tags = $controller->getTags();
-// Ensure selected tag is present in $tags
 if ($tagId !== null) {
     $tagIds = array_column($tags, 'id');
     if (!in_array($tagId, $tagIds)) {
-        // Fetch the selected tag from DB
+        
         require_once __DIR__ . '/../classes/config/Database.php';
         $db = Database::getInstance();
         $stmt = $db->prepare('SELECT * FROM tags WHERE id = :id');
@@ -57,7 +56,7 @@ if ($tagId !== null) {
                 break;
             }
         }
-        // If selected tag is not in the first $maxInline, swap it in
+
         if ($selectedTagIndex !== null && $selectedTagIndex >= $maxInline) {
             $selectedTag = $tags[$selectedTagIndex];
             $inlineTags[$maxInline-1] = $selectedTag;

@@ -8,7 +8,7 @@ class CartController {
     private CartItem $cartItemModel;
 
     public function __construct() {
-        // Don't call session_start() here - let the calling code handle it
+
         $this->cartModel = new Cart();
         $this->cartItemModel = new CartItem();
     }

@@ -87,16 +87,16 @@ class Product {
     }
 
     public function delete(int $id): void {
-        // Remove from cartitems
+        
         $stmt = $this->db->prepare("DELETE FROM cartitems WHERE product_id = :id");
         $stmt->execute(['id' => $id]);
-        // Remove from productTags
+        
         $stmt = $this->db->prepare("DELETE FROM productTags WHERE product_id = :id");
         $stmt->execute(['id' => $id]);
-        // Remove from orderitems (required by foreign key)
+        
         $stmt = $this->db->prepare("DELETE FROM orderitems WHERE product_id = :id");
         $stmt->execute(['id' => $id]);
-        // Now delete the product
+
         $stmt = $this->db->prepare("DELETE FROM products WHERE id = :id");
         $stmt->execute(['id' => $id]);
     }

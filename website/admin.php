@@ -14,7 +14,7 @@ $admin = new AdminController();
 $products = $admin->getProducts();
 $tags = $admin->getTags();
 
-// Handle tag actions
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action']) && $_POST['action'] === 'add_tag' && !empty($_POST['tag'])) {
         $admin->createTag(trim($_POST['tag']));

@@ -3,7 +3,7 @@ session_start();
 
 require_once __DIR__ . '/../classes/controllers/ReviewController.php';
 
-// Check if user is logged in
+
 if (empty($_SESSION['user'])) {
     header("Location: login.php");
     exit;

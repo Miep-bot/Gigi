@@ -6,7 +6,7 @@ require_once __DIR__ . '/../classes/config/Security.php';
 
 $controller = new CartController();
 
-// If user is not logged in, redirect to login page instead of letting the controller throw
+ 
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
     exit;
@@ -24,13 +24,13 @@ if (isset($_POST['removeAll'])) {
 }
 
 if (isset($_POST['increase'])) {
-    // Add the same product again
+    
     $controller->addProduct((int)$_POST['increase']);
 }
 
 if (isset($_POST['decrease'])) {
     $cartItemIds = explode(',', $_POST['decrease']);
-    // Remove only the first one (most recent)
+    
     if (!empty($cartItemIds)) {
         $controller->removeItem((int)trim($cartItemIds[0]));
     }
@@ -38,7 +38,7 @@ if (isset($_POST['decrease'])) {
 
 $items = $controller->getCartItems();
 
-// Group items by product and calculate quantities
+
 $groupedItems = [];
 foreach ($items as $item) {
     $productId = (int)$item['id'];
