@@ -121,3 +121,5 @@ document.addEventListener('click', function(event) {
     }
 });
 </script>
+
+<?php include '../style/components/footer.php'; ?>

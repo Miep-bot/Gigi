@@ -65,6 +65,8 @@ $orders = $controller->getOrders();
     <?php endforeach; ?>
 </div>
 
+<?php include '../style/components/footer.php'; ?>
+
 <script>
 function toggleOrder(button) {
     const details = button.nextElementSibling;

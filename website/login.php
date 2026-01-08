@@ -45,5 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 
     <hr>
-    <p>Don't have an account? <a href="register.php">Register here</a></p>
+    <p>Don't have an account? 
+<a href="register.php">Register here</a></p>
 </div>
+
+<?php include '../style/components/footer.php'; ?>

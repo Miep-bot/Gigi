@@ -58,4 +58,15 @@ class User {
             'id' => $userId
         ]);
     }
+
+    public function updatePassword(int $userId, string $newPassword): void {
+        $passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+        $stmt = $this->db->prepare(
+            "UPDATE users SET password = :password WHERE id = :id"
+        );
+        $stmt->execute([
+            'password' => $passwordHash,
+            'id' => $userId
+        ]);
+    }
 }

@@ -25,3 +25,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <hr>
 <p>Already have an account? <a href="login.php"><button>Login here</button></a></p>
+
+<?php include '../style/components/footer.php'; ?>

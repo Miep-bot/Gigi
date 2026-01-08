@@ -1,3 +1,88 @@
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 110px; 
+}
+.footer {
+    margin-top: 5em;
+}
+/* -------------------------
+   Footer
+--------------------------- */
+.footer {
+    background: linear-gradient(90deg, #7F35FF 0%, #5f1fd9 100%);
+    color: #fff;
+    padding: 2.2rem 0 1.2rem 0;
+    box-shadow: 0 -2px 12px rgba(79,0,217,0.08);
+    font-size: 1.05rem;
+    /* Footer is now a normal block, not fixed */
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 2rem;
+}
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2em;
+}
+.footer-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
+}
+.footer-tagline {
+    font-size: 1rem;
+    color: #e8dbff;
+    font-style: italic;
+}
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.15s;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+}
+.footer-links a:hover {
+    color: #d1bfff;
+    border-bottom: 2px solid #d1bfff;
+}
+.footer-copy {
+    margin-top: 0.7em;
+    font-size: 0.98rem;
+    color: #e8dbff;
+    flex-basis: 100%;
+    text-align: right;
+}
+@media (max-width: 700px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+        padding: 0 1rem;
+    }
+    .footer-copy {
+        text-align: left;
+    }
+}
 /* -------------------------
    Tags Popup (Index Page)
 --------------------------- */
@@ -317,13 +402,7 @@ table th {
     gap: 0.5rem;
     background: #f7f7fb;
     padding: 0.4rem 0.6rem;
-    border-radius: 6px;
-    border: 1px solid #eee;
-}
-.product-form .form-actions {
-    margin-top: 1rem;
-    display: flex;
-    gap: 0.8rem;
+    margin-top: auto;
     align-items: center;
 }
 .btn-secondary-link button {
@@ -332,6 +411,7 @@ table th {
 
 /* -------------------------
    Tag active state on index
+    position: relative; /* Changed from fixed to relative */
 --------------------------- */
 .nav a.active-tag, nav a.active-tag, .filter-start.active-tag {
     background-color: #e8dbff;
@@ -453,8 +533,9 @@ nav a {
     color: #fff;
     padding: 1.2rem 0;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
+    position: relative;
+    width: 100%;
+    text-align: center;
     z-index: 999;
 }
 
@@ -577,15 +658,29 @@ nav a {
 /* -------------------------
    Cart Badge
 --------------------------- */
+.nav-links li a {
+    position: relative;
+    /* ...existing code... */
+}
 .cart-badge {
-    background-color: #dc3545;
-    color: white;
+    background-color: #ff1a1a;
+    color: #fff;
     border-radius: 50%;
-    padding: 0.28em 0.6em;
-    font-size: 0.95rem;
+    width: 1.5em;
+    height: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
     font-weight: 700;
-    margin-left: 0.4em;
-    vertical-align: middle;
+    position: absolute;
+    top: -0.7em;
+    right: -1.1em;
+    box-shadow: 0 2px 8px rgba(255,26,26,0.15);
+    padding: 0;
+    line-height: 1;
+    z-index: 2;
+    transition: background 0.15s;
 }
 
 /* -------------------------

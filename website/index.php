@@ -66,8 +66,10 @@ if ($tagId !== null) {
     $shown = 0;
     foreach ($inlineTags as $tag):
         $isActive = ($tagId === (int)$tag['id']);
-    ?>
-        <a href="?tag=<?= (int)$tag['id'] ?>" class="<?= $isActive ? 'active-tag' : '' ?>">
+        $classes = [];
+        if ($isActive) $classes[] = 'active-tag';
+        ?>
+        <a href="?tag=<?= (int)$tag['id'] ?>" class="<?= implode(' ', $classes) ?>">
             <?= Security::escape($tag['tag']) ?>
         </a>
     <?php endforeach; ?>
@@ -86,8 +88,9 @@ if ($tagId !== null) {
         <div class="tags-popup-list">
             <a href="index.php" class="filter-start <?= is_null($tagId) ? 'active-tag' : '' ?>">All</a>
             <?php foreach ($tags as $tag): ?>
-                <?php $isActive = ($tagId === (int)$tag['id']); ?>
-                <a href="?tag=<?= (int)$tag['id'] ?>" class="<?= $isActive ? 'active-tag' : '' ?>">
+                <?php $isActive = ($tagId === (int)$tag['id']); $classes = [];
+                if ($isActive) $classes[] = 'active-tag'; ?>
+                <a href="?tag=<?= (int)$tag['id'] ?>" class="<?= implode(' ', $classes) ?>">
                     <?= Security::escape($tag['tag']) ?>
                 </a>
             <?php endforeach; ?>
@@ -133,3 +136,5 @@ if ($tagId !== null) {
         </div>
     <?php endforeach; ?>
 </div>
+
+<?php include '../style/components/footer.php'; ?>

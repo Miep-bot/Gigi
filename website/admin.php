@@ -103,3 +103,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Add Tag</button>
     </form>
 </div>
+
+<?php include '../style/components/footer.php'; ?>

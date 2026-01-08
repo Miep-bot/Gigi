@@ -59,14 +59,16 @@ class AdminController {
             $productId = $this->productModel->create(
                 $data['name'],
                 $data['description'] ?? null,
-                (int)$data['price']
+                (int)$data['price'],
+                $data['image'] ?? null
             );
         } else {
             $this->productModel->update(
                 (int)$data['id'],
                 $data['name'],
                 $data['description'] ?? null,
-                (int)$data['price']
+                (int)$data['price'],
+                $data['image'] ?? null
             );
             $productId = (int)$data['id'];
         }

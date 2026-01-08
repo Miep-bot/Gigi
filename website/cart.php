@@ -113,3 +113,5 @@ foreach ($items as $item) {
         <a href="checkout.php" style="margin-left: 1em;"><button>Proceed to Checkout →</button></a>
     <?php endif; ?>
 </div>
+
+<?php include '../style/components/footer.php'; ?>

@@ -146,3 +146,5 @@ $reviews = $reviewController->getByProduct($productId);
 <hr>
 <a href="index.php"><button>← Back to products</button></a>
 <a href="cart.php" style="margin-left: 1em;"><button>Go to Cart →</button></a>
+
+<?php include '../style/components/footer.php'; ?>

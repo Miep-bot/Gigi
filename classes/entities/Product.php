@@ -41,23 +41,22 @@ class Product {
     public function create(
         string $name,
         ?string $description,
-        int $price
+        int $price,
+        ?string $image = null
     ): int {
         if ($price <= 0) {
             throw new Exception("Prijs moet groter zijn dan 0");
         }
-
         $stmt = $this->db->prepare(
-            "INSERT INTO products (name, description, price, creation_time)
-            VALUES (:name, :description, :price, UNIX_TIMESTAMP())"
+            "INSERT INTO products (name, description, price, image, creation_time)
+            VALUES (:name, :description, :price, :image, UNIX_TIMESTAMP())"
         );
-
         $stmt->execute([
             'name' => $name,
             'description' => $description,
-            'price' => $price
+            'price' => $price,
+            'image' => $image
         ]);
-
         return (int)$this->db->lastInsertId();
     }
 
@@ -65,32 +64,40 @@ class Product {
         int $id,
         string $name,
         ?string $description,
-        int $price
+        int $price,
+        ?string $image = null
     ): void {
         if ($price <= 0) {
             throw new Exception("Prijs moet groter zijn dan 0");
         }
-
-        $stmt = $this->db->prepare(
-            "UPDATE products
-            SET name = :name,
-                description = :description,
-                price = :price
-            WHERE id = :id"
-        );
-
-        $stmt->execute([
+        $sql = "UPDATE products SET name = :name, description = :description, price = :price";
+        $params = [
             'id' => $id,
             'name' => $name,
             'description' => $description,
             'price' => $price
-        ]);
+        ];
+        if ($image !== null) {
+            $sql .= ", image = :image";
+            $params['image'] = $image;
+        }
+        $sql .= " WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
     }
 
     public function delete(int $id): void {
-        $stmt = $this->db->prepare(
-            "DELETE FROM products WHERE id = :id"
-        );
+        // Remove from cartitems
+        $stmt = $this->db->prepare("DELETE FROM cartitems WHERE product_id = :id");
+        $stmt->execute(['id' => $id]);
+        // Remove from productTags
+        $stmt = $this->db->prepare("DELETE FROM productTags WHERE product_id = :id");
+        $stmt->execute(['id' => $id]);
+        // Remove from orderitems (required by foreign key)
+        $stmt = $this->db->prepare("DELETE FROM orderitems WHERE product_id = :id");
+        $stmt->execute(['id' => $id]);
+        // Now delete the product
+        $stmt = $this->db->prepare("DELETE FROM products WHERE id = :id");
         $stmt->execute(['id' => $id]);
     }
 }

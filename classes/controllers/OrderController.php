@@ -48,10 +48,11 @@ class OrderController {
         $this->orderModel->create($userId, $items);
 
         // coins aftrekken
-        $this->userModel->updateCoins(
-            $userId,
-            $user['coins'] - $total
-        );
+        $newCoins = $user['coins'] - $total;
+        $this->userModel->updateCoins($userId, $newCoins);
+        if (isset($_SESSION['user'])) {
+            $_SESSION['user']['coins'] = $newCoins;
+        }
 
         // cart leegmaken
         foreach ($items as $item) {
